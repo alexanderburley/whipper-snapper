@@ -4,7 +4,7 @@ module.exports = class Post {
    <!DOCTYPE html>
     <html>
     <body>
-
+    <link rel="stylesheet" type="text/css" href="github.css">
    `;
 
     this.postpend = `

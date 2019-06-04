@@ -3,13 +3,16 @@ module.exports = class Home {
     this.prepend = `
    <!DOCTYPE html>
     <html>
-    <body>
-    <h1>The Blog</h1>
+      <head>
+      <link rel="stylesheet" type="text/css" href="github.css">
+      </head>
+      <body>
+        <h1>The Blog</h1>
    `;
 
     this.postpend = `
 
-   </body>
+    </body>
    </html>
    `;
 

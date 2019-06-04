@@ -6,24 +6,38 @@ const converter = new showdown.Converter();
 converter.setFlavor("github");
 
 const outDir = "./out/";
+const assetsDir = "./assets/";
+const postsDir = "./posts/";
+const stylesheetsDir = outDir + assetsDir + "./stylsheets/";
 
 module.exports = () => {
   mkdir();
-  let files = fs.readdirSync("./posts");
+  let posts = fs.readdirSync(postsDir);
+  let stylesheets = fs.readdirSync(assetsDir + "stylesheets");
   let home = new Home();
-  files.forEach(file => {
-    let text = fs.readFileSync("./posts/" + file).toString();
+  posts.forEach(file => {
+    let text = fs.readFileSync(postsDir + file).toString();
     let html = converter.makeHtml(text);
     let title = file.split(".")[0];
     let post = new Post(title);
-    fs.writeFileSync("./out/" + title + ".html", post.inject(html).build());
+    fs.writeFileSync(outDir + title + ".html", post.inject(html).build());
     home = home.injectPost(post);
   });
-  fs.writeFileSync("./out/_index.html", home.build());
+
+  stylesheets.forEach(file => {
+    fs.createReadStream(assetsDir + "stylesheets/" + file).pipe(
+      fs.createWriteStream(outDir + file)
+    );
+  });
+
+  fs.writeFileSync(outDir + "index.html", home.build());
 };
 
 const mkdir = () => {
   if (!fs.existsSync(outDir)) {
-    fs.mkdirSync("./out/");
+    fs.mkdirSync(outDir);
+    if (!fs.existsSync(stylesheetsDir)) {
+      fs.mkdirSync(stylesheetsDir);
+    }
   }
 };

@@ -16,7 +16,7 @@ module.exports = () => {
     let html = converter.makeHtml(text);
     let title = file.split(".")[0];
     let post = new Post(title);
-    fs.writeFileSync("./out/_" + title + ".html", post.inject(html).build());
+    fs.writeFileSync("./out/" + title + ".html", post.inject(html).build());
     home = home.injectPost(post);
   });
   fs.writeFileSync("./out/_index.html", home.build());

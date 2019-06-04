@@ -18,7 +18,7 @@ module.exports = class Home {
 
   injectPost(post) {
     this.body += `
-      <a href="./_${post.title}.html"> ${post.title} </a>
+      <a href="./${post.title}.html"> ${post.title} </a>
       <br>
     `;
     return this;

@@ -1,5 +1,3 @@
-## Alexa, Shut Up!
-
 So in case you missed it, Amazon released an update for the 7th Generation _Fire_ tablets, enabling them to use Alexa functionality and also enter a _show mode_ which passively displays the weather and time. As a _Fire 7_ owner this was great news for me.
 
 I picked up my tablet just over a year ago with a fair few good intentions, I was going to embrace technology, using the _Fire_ to control the music in my living room and to read the news each morning before work. I downloaded crossword apps, Duolingo and a host of e-reader apps. Nine months later and the most use I'd had out of the tablet was watching _Catch Me If You Can_ (you know, the one starring Leo and Tom Hanks) on an overnight train in India.

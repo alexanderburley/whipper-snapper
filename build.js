@@ -8,7 +8,7 @@ converter.setFlavor("github");
 const outDir = "./out/";
 const assetsDir = "./assets/";
 const postsDir = "./posts/";
-const stylesheetsDir = outDir + assetsDir + "./stylsheets/";
+const stylesheetsDir = outDir + assetsDir + "./stylesheets/";
 
 module.exports = () => {
   mkdir();

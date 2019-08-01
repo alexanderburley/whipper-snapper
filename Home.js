@@ -7,6 +7,7 @@ module.exports = class Home {
     ${head}
     ${bodyPrePend}
     ${nav.build()}
+  
    `;
 
     this.postpend = `
@@ -20,8 +21,17 @@ module.exports = class Home {
 
   injectPost(post) {
     this.body += `
-      <a href="./${post.title}.html"> ${post.title} </a>
-      <br>
+    <div class="card>
+      <div class="card-body">
+          <h5 class="card-title"><a href="./${post.title}.html">${
+      post.title
+    }</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
     `;
     return this;
   }
@@ -46,3 +56,4 @@ const bodyPrePend = `<body>
 <div class="container">
 <h1>The Blog</h1>
 <hr>`;
+

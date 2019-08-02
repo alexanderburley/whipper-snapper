@@ -1,5 +1,5 @@
 const Entity = require("./Entity");
-const { navigation } = require("./config");
+const { navigation } = require("../config");
 
 let prepend = `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">

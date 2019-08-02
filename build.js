@@ -8,12 +8,14 @@ const assetsDir = "./assets/";
 const postsDir = "./posts/";
 const stylesheetsDir = outDir + assetsDir + "./stylesheets/";
 
-const PostEntity = require("./PostEntity");
-const HomeEntity = require("./HomeEntity");
-const PageEntity = require("./PageEntity");
-const BlogpostEntity = require("./BlogpostEntity");
-const AboutEntity = require("./AboutEntity");
-const ContactEntity = require("./ContactEntity");
+const {
+  PostEntity,
+  HomeEntity,
+  PageEntity,
+  BlogpostEntity,
+  ContactEntity,
+  AboutEntity
+} = require("./entities");
 
 module.exports = () => {
   makeDirectories();

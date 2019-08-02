@@ -1,1 +1,1 @@
-require("./BuildEntities")();
+require("./build")();

@@ -1,7 +1,7 @@
 const Entity = require("./Entity");
 let content = title => {
   return `
-  <div class="card>
+  <div class="card">
     <div class="card-body">
       <h5 class="card-title"><a href="./${title}.html">${title}</a></h5>
       <h6 class="card-subtitle mb-2 text-muted">SomeDate</h6>

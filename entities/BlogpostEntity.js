@@ -1,9 +1,11 @@
 const Entity = require("./Entity");
 let content = (title, html) => {
   return `
-    <h1>${title}</h1>
-    <hr>
-    ${html}
+    <div class="container">
+      <h1>${title}</h1>
+      <hr>
+      ${html}
+    </div>
   `;
 };
 

@@ -8,10 +8,10 @@ const assetsDir = "./assets/";
 const postsDir = "./posts/";
 const stylesheetsDir = outDir + assetsDir + "./stylesheets/";
 
-let PostEntity = require("./PostEntity");
-let HomeEntity = require("./HomeEntity");
-let PageEntity = require("./PageEntity");
-let BlogpostEntity = require("./BlogpostEntity");
+const PostEntity = require("./PostEntity");
+const HomeEntity = require("./HomeEntity");
+const PageEntity = require("./PageEntity");
+const BlogpostEntity = require("./BlogpostEntity");
 
 module.exports = () => {
   makeDirectories();
@@ -22,9 +22,9 @@ module.exports = () => {
 
 const buildBlogPosts = () => {
   fs.readdirSync(postsDir).forEach(file => {
-    let text = fs.readFileSync(postsDir + file).toString();
-    let html = converter.makeHtml(text);
-    let title = file.split(".")[0];
+    const text = fs.readFileSync(postsDir + file).toString();
+    const html = converter.makeHtml(text);
+    const title = file.split(".")[0];
     fs.writeFileSync(
       outDir + title + ".html",
       PageEntity(BlogpostEntity(title, html).build()).build()
@@ -33,14 +33,13 @@ const buildBlogPosts = () => {
 };
 
 const buildHomepage = () => {
-  let page = PageEntity(HomeEntity(returnPosts()).build());
+  const page = PageEntity(HomeEntity(returnPosts()).build());
   fs.writeFileSync(outDir + "index.html", page.build());
 };
 
 const returnPosts = () => {
   return fs.readdirSync(postsDir).map(file => {
-    let title = file.split(".")[0];
-    return PostEntity(title);
+    PostEntity(file.split(".")[0]);
   });
 };
 
@@ -54,7 +53,7 @@ const makeDirectories = () => {
 };
 
 const buildAssets = () => {
-  let stylesheets = fs.readdirSync(assetsDir + "stylesheets");
+  const stylesheets = fs.readdirSync(assetsDir + "stylesheets");
   stylesheets.forEach(file => {
     fs.createReadStream(assetsDir + "stylesheets/" + file).pipe(
       fs.createWriteStream(outDir + file)

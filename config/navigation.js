@@ -7,15 +7,15 @@ module.exports = {
     items: [
       {
         text: "Home",
-        value: "./index.html"
+        value: "index"
       },
       {
         text: "About Me",
-        value: "./about-me.html"
+        value: "about-me"
       },
       {
         text: "Contact",
-        value: "./contact.html"
+        value: "contact"
       }
     ]
   }

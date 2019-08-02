@@ -1,31 +1,26 @@
 const Entity = require("./Entity");
-const { navigation } = require("../config");
-
-let prepend = `
+let content = navigation => `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" 
-      href="${navigation.brand.value}">${navigation.brand.text}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="${navigation.brand.value}">
+      ${navigation.brand.text}
+    </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-`;
-
-let postpend = `
+        ${navItems(navigation)}
       </ul>
     </div>
   </nav>
+
 `;
 
-let content = navigation =>
+let navItems = navigation =>
   navigation.items.reduce((acc, item) => {
     return `
     ${acc}\n
     <li class="nav-item">
-      <a class="nav-link" href="${item.value}">${item.text}</a>
+      <a class="nav-link" href="./${item.value}.html">${item.text}</a>
     </li>
   `;
   }, "");
 
-module.exports = navigation => Entity(prepend, content(navigation), postpend);
+module.exports = navigation => Entity(content(navigation));

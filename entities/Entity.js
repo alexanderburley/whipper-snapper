@@ -1,10 +1,8 @@
-module.exports = (prepend, content, postpend) => {
+module.exports = content => {
   return {
     build: function() {
-      return this.prepend + this.content + this.postpend;
+      return this.content;
     },
-    prepend,
-    content,
-    postpend
+    content
   };
 };

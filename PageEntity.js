@@ -1,5 +1,6 @@
 let Entity = require("./Entity");
 let NavbarEntity = require("./NavbarEntity");
+let { navigation } = require("./config");
 let prepend = `
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,31 +20,6 @@ let content = body => {
    ${NavbarEntity(navigation).build()}
    ${body}
   `;
-};
-
-let navigation = {
-  brand: {
-    text: "AB",
-    value: "./index.html"
-  },
-  items: [
-    {
-      text: "Home",
-      value: "./index.html"
-    },
-    {
-      text: "About Me",
-      value: "./about.html"
-    },
-    {
-      text: "Contact",
-      value: "./contact.html"
-    },
-    {
-      text: "My Setup",
-      value: "./my-dev-setup.html"
-    }
-  ]
 };
 
 module.exports = body => Entity(prepend, content(body), postpend);

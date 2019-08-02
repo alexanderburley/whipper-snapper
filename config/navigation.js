@@ -11,7 +11,7 @@ module.exports = {
       },
       {
         text: "About Me",
-        value: "./about.html"
+        value: "./about-me.html"
       },
       {
         text: "Contact",

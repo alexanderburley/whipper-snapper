@@ -6,15 +6,14 @@ converter.setFlavor("github");
 const outDir = "./out/";
 const assetsDir = "./assets/";
 const postsDir = "./posts/";
+const pagesDir = "./pages/";
 const stylesheetsDir = outDir + assetsDir + "./stylesheets/";
 
 const {
   PostEntity,
   HomeEntity,
   PageEntity,
-  BlogpostEntity,
-  ContactEntity,
-  AboutEntity
+  BlogpostEntity
 } = require("./entities");
 
 module.exports = () => {
@@ -43,14 +42,12 @@ const buildHomepage = () => {
 };
 
 const buildOtherPages = () => {
-  fs.writeFileSync(
-    outDir + "about.html",
-    PageEntity(AboutEntity().build()).build()
-  );
-  fs.writeFileSync(
-    outDir + "contact.html",
-    PageEntity(ContactEntity().build()).build()
-  );
+  fs.readdirSync(pagesDir).forEach(file => {
+    const text = fs.readFileSync(pagesDir + file).toString();
+    const html = converter.makeHtml(text);
+    const title = file.split(".")[0];
+    fs.writeFileSync(outDir + title + ".html", PageEntity(html).build());
+  });
 };
 
 const returnPosts = () => {
@@ -60,6 +57,9 @@ const returnPosts = () => {
 const makeDirectories = () => {
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir);
+    if (!fs.existsSync(assetsDir)) {
+      fs.mkdirSync(assetsDir);
+    }
     if (!fs.existsSync(stylesheetsDir)) {
       fs.mkdirSync(stylesheetsDir);
     }

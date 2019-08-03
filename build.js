@@ -9,6 +9,7 @@ const postsDir = "./posts/";
 const pagesDir = "./pages/";
 const stylesheetsDir = outDir + assetsDir + "./stylesheets/";
 
+const dateFormatLength = "YYYY-MM-DD-".length;
 const {
   PostEntity,
   HomeEntity,
@@ -51,7 +52,15 @@ const buildOtherPages = () => {
 };
 
 const returnPosts = () => {
-  return fs.readdirSync(postsDir).map(file => PostEntity(file.split(".")[0]));
+  return fs.readdirSync(postsDir).map(file => {
+    const fileName = file.split(".")[0];
+    const title = fileName
+      .substr(dateFormatLength, fileName.length)
+      .split("-")
+      .join(" ");
+    const date = fileName.substr(0, dateFormatLength - 1);
+    return PostEntity(title, date);
+  });
 };
 
 const makeDirectories = () => {

@@ -12,7 +12,9 @@ let content = body => {
     </head>
     <body>
       ${NavbarEntity(navigation).build()}
-      ${body}
+      <div class="container">
+        ${body}
+      </div>
     </body>
   `;
 };

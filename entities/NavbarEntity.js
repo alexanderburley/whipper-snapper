@@ -1,7 +1,7 @@
 const Entity = require("./Entity");
 let content = navigation => `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="${navigation.brand.value}">
+    <a class="navbar-brand" href="./${navigation.brand.value}.html">
       ${navigation.brand.text}
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -2,7 +2,7 @@ module.exports = {
   navigation: {
     brand: {
       text: "AB",
-      value: "./index.html"
+      value: "index"
     },
     items: [
       {

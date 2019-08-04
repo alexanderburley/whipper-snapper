@@ -1,12 +1,12 @@
 const Entity = require("./Entity");
-let content = (title, html) => {
+let content = post => {
   return `
     <div class="container">
-      <h1>${title}</h1>
+      <h1>${post.title}</h1>
       <hr>
-      ${html}
+      ${post.content}
     </div>
   `;
 };
 
-module.exports = (title, html) => Entity(content(title, html));
+module.exports = post => Entity(content(post));

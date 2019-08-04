@@ -10,12 +10,7 @@ const pagesDir = "./pages/";
 const stylesheetsDir = outDir + assetsDir + "./stylesheets/";
 
 const dateFormatLength = "YYYY-MM-DD-".length;
-const {
-  PostEntity,
-  HomeEntity,
-  PageEntity,
-  BlogpostEntity
-} = require("./entities");
+const { HomeEntity, PageEntity, BlogpostEntity } = require("./entities");
 
 module.exports = () => {
   makeDirectories();
@@ -26,13 +21,10 @@ module.exports = () => {
 };
 
 const buildBlogPosts = () => {
-  fs.readdirSync(postsDir).forEach(file => {
-    const text = fs.readFileSync(postsDir + file).toString();
-    const html = converter.makeHtml(text);
-    const title = file.split(".")[0];
+  returnPosts().forEach(post => {
     fs.writeFileSync(
-      outDir + title + ".html",
-      PageEntity(BlogpostEntity(title, html).build()).build()
+      outDir + post.url,
+      PageEntity(BlogpostEntity(post).build()).build()
     );
   });
 };
@@ -54,12 +46,16 @@ const buildOtherPages = () => {
 const returnPosts = () => {
   return fs.readdirSync(postsDir).map(file => {
     const fileName = file.split(".")[0];
-    const title = fileName
-      .substr(dateFormatLength, fileName.length)
-      .split("-")
-      .join(" ");
-    const date = fileName.substr(0, dateFormatLength - 1);
-    return PostEntity(title, date);
+    const post = {
+      title: fileName
+        .substr(dateFormatLength, fileName.length)
+        .split("-")
+        .join(" "),
+      url: `${fileName}.html`,
+      date: fileName.substr(0, dateFormatLength - 1),
+      content: converter.makeHtml(fs.readFileSync(postsDir + file).toString())
+    };
+    return post;
   });
 };
 
@@ -68,9 +64,9 @@ const makeDirectories = () => {
     fs.mkdirSync(outDir);
     if (!fs.existsSync(assetsDir)) {
       fs.mkdirSync(assetsDir);
-    }
-    if (!fs.existsSync(stylesheetsDir)) {
-      fs.mkdirSync(stylesheetsDir);
+      if (!fs.existsSync(stylesheetsDir)) {
+        fs.mkdirSync(stylesheetsDir);
+      }
     }
   }
 };

@@ -1,14 +1,14 @@
 const Entity = require("./Entity");
-let content = (title, date) => {
+let content = post => {
   return `
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title"><a href="./${title}.html">${title}</a></h5>
-      <h6 class="card-subtitle mb-2 text-muted">${date}</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h5 class="card-title"><a href="./${post.url}">${post.title}</a></h5>
+      <h6 class="card-subtitle mb-2 text-muted">${post.date}</h6>
+      <p class="card-text">${post.content.substr(0, 300)}...</p>
     </div>
   </div>
 `;
 };
 
-module.exports = (title, date) => Entity(content(title, date));
+module.exports = post => Entity(content(post));

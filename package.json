@@ -1,6 +1,6 @@
 {
   "name": "blogger",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,13 +18,14 @@
   },
   "homepage": "https://github.com/alexanderburley/blogger#readme",
   "dependencies": {
+    "commander": "^5.0.0",
     "github-markdown-css": "^3.0.1",
-    "prettier": "^1.17.1",
-    "showdown": "^1.9.0"
+    "showdown": "^1.9.1"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.2.0",
-    "eslint-plugin-prettier": "^3.1.0"
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^2.0.4"
   }
 }

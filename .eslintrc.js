@@ -2,19 +2,21 @@ module.exports = {
   env: {
     commonjs: true,
     es6: true,
-    node: true
+    node: true,
   },
-  extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  extends: ["airbnb", "prettier"],
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
   },
+  plugins: ["prettier"],
   rules: {
+    "prettier/prettier": "error",
     "no-console": "off",
     semi: ["error", "always"],
-    quotes: ["error", "double"]
-  }
+    quotes: ["error", "double"],
+  },
 };

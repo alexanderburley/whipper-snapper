@@ -1,8 +1,9 @@
-let Entity = require("./Entity");
-let NavbarEntity = require("./NavbarEntity");
-let { navigation } = require("../config");
+let Entity = require('./Entity');
+let NavbarEntity = require('./NavbarEntity');
+const { join } = require('path');
 
-let content = body => {
+let content = (body, directory) => {
+  const { navigation } = require(join(directory, 'config'));
   return `
     <head>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,4 +20,4 @@ let content = body => {
   `;
 };
 
-module.exports = body => Entity(content(body));
+module.exports = (body, directory) => Entity(content(body, directory));

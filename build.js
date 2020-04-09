@@ -27,21 +27,24 @@ module.exports = (directory) => {
 
 const buildBlogPosts = (directory) => {
   returnPosts().forEach((post) => {
-    fs.writeFileSync(join(outDir, post.url), PageEntity(BlogpostEntity(post).build()).build());
+    fs.writeFileSync(
+      join(outDir, post.url),
+      PageEntity(BlogpostEntity(post).build(), directory).build()
+    );
   });
 };
 
 const buildHomepage = (directory) => {
-  const page = PageEntity(HomeEntity(returnPosts()).build());
+  const page = PageEntity(HomeEntity(returnPosts()).build(), directory);
   fs.writeFileSync(join(outDir, 'index.html'), page.build());
 };
 
-const buildOtherPages = () => {
+const buildOtherPages = (directory) => {
   fs.readdirSync(pagesDir).forEach((file) => {
     const text = fs.readFileSync(join(pagesDir, file)).toString();
     const html = converter.makeHtml(text);
     const title = file.split('.')[0];
-    fs.writeFileSync(join(outDir, `${title}.html`), PageEntity(html).build());
+    fs.writeFileSync(join(outDir, `${title}.html`), PageEntity(html, directory).build());
   });
 };
 

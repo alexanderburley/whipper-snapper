@@ -1,22 +1,31 @@
 {
-  "name": "blogger",
+  "name": "whipsnap",
   "version": "0.0.1",
-  "description": "",
+  "description": "Build a website focussed around posts, super simple and all in JS",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
+  "bin": {
+    "whipsnap": "cli.js"
+  },
+  "files": [
+    "entities/",
+    "build.js",
+    "cli.js",
+    "index.js",
+    "readme.md"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexanderburley/blogger.git"
+    "url": "git+https://github.com/alexanderburley/whipper-snapper.git"
   },
-  "author": "",
+  "author": "alexanderburley",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexanderburley/blogger/issues"
+    "url": "https://github.com/alexanderburley/whipper-snapper/issues"
   },
-  "homepage": "https://github.com/alexanderburley/blogger#readme",
+  "homepage": "https://github.com/alexanderburley/whipper-snapper#readme",
   "dependencies": {
     "commander": "^5.0.0",
     "github-markdown-css": "^3.0.1",

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { program } = require('commander');
 const builder = require('./build');
 const { join } = require('path');
@@ -12,4 +14,3 @@ program
   });
 
 program.parse(process.argv);
-console.log(program.directory);

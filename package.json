@@ -29,6 +29,7 @@
   "dependencies": {
     "commander": "^5.0.0",
     "github-markdown-css": "^3.0.1",
+    "promptly": "^3.0.3",
     "showdown": "^1.9.1"
   },
   "devDependencies": {

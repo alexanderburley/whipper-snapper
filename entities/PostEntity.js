@@ -1,5 +1,6 @@
 const Entity = require("./Entity");
-let content = post => {
+
+const content = (post) => {
   return `
   <div class="card">
     <div class="card-body">
@@ -11,4 +12,4 @@ let content = post => {
 `;
 };
 
-module.exports = post => Entity(content(post));
+module.exports = (post) => Entity(content(post));

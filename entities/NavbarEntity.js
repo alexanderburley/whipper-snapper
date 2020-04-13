@@ -1,5 +1,16 @@
 const Entity = require("./Entity");
-let content = navigation => `
+
+const navItems = (navigation) =>
+  navigation.items.reduce((acc, item) => {
+    return `
+    ${acc}\n
+    <li class="nav-item">
+      <a class="nav-link" href="./${item.value}.html">${item.text}</a>
+    </li>
+  `;
+  }, "");
+
+const content = (navigation) => `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="./${navigation.brand.value}.html">
       ${navigation.brand.text}
@@ -13,14 +24,4 @@ let content = navigation => `
 
 `;
 
-let navItems = navigation =>
-  navigation.items.reduce((acc, item) => {
-    return `
-    ${acc}\n
-    <li class="nav-item">
-      <a class="nav-link" href="./${item.value}.html">${item.text}</a>
-    </li>
-  `;
-  }, "");
-
-module.exports = navigation => Entity(content(navigation));
+module.exports = (navigation) => Entity(content(navigation));

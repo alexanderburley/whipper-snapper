@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const builder = require('./build');
-const { join } = require('path');
+const { program } = require("commander");
+const { join } = require("path");
+const builder = require("./build");
 
-program.version(require('./package.json').version);
-program.option('-d, --directory <directory>', '/Users/Alex/src/blog', process.cwd());
+program.version(require("./package.json").version);
+
+program.option("-s, --source <source>", "/Users/Alex/src/blog", process.cwd());
+program.option("-d, --destination <destination>", "/Users/Alex/src/blog/out/", process.cwd());
 program
-  .command('build')
-  .description('Build your website')
+  .command("build")
+  .description("Build your website")
   .action(() => {
-    builder(join(process.cwd(), program.directory));
+    builder(join(process.cwd(), program.source), join(process.cwd(), program.destination));
   });
 
 program.parse(process.argv);

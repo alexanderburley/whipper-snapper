@@ -1,9 +1,11 @@
-let Entity = require('./Entity');
-let NavbarEntity = require('./NavbarEntity');
-const { join } = require('path');
+/* eslint-disable global-require */
+const { join } = require("path");
+const Entity = require("./Entity");
+const NavbarEntity = require("./NavbarEntity");
 
-let content = (body, directory) => {
-  const { navigation } = require(join(directory, 'config'));
+const content = (body, directory) => {
+  // eslint-disable-next-line import/no-dynamic-require
+  const { navigation } = require(join(directory, "config"));
   return `
     <head>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

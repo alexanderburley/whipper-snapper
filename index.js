@@ -1,1 +1,1 @@
-require('./build')(__dirname);
+require("./build")(__dirname);

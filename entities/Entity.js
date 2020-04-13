@@ -1,8 +1,8 @@
-module.exports = content => {
+module.exports = (content) => {
   return {
-    build: function() {
+    build() {
       return this.content;
     },
-    content
+    content,
   };
 };
